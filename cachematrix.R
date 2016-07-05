@@ -2,8 +2,25 @@
 ## functions do
 
 ## Write a short comment describing this function
-
+## 
 makeCacheMatrix <- function(x = matrix()) {
+
+    inv <- NULL
+
+    set <- function(y) 
+    { x <<- y    
+      inv <<- NULL     
+    }
+    
+    get <- function() x
+    
+    setINV <- function(inverse) inv <<- inverse;
+
+    getINV <- function() inv
+    
+    list(set = set, get = get,
+         setINV = setINV,
+         getINV = getINV)
 
 }
 
@@ -11,5 +28,16 @@ makeCacheMatrix <- function(x = matrix()) {
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+## Calculate the inverse of 'x'
+  inv <- NULL ##x$getINV()
+  print(x)
+  if (!is.null(inv)) {
+    message("use cache")
+    return(inv)
+  }
+  m <- x$get()
+  inv <- solve(m, ...)
+  x$setINV(inv)
+  return(inv)
 }
+
