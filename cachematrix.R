@@ -1,9 +1,13 @@
 ## Put comments here that give an overall description of what your
 ## functions do
 
-## Write a short comment describing this function
-## 
+## This function allows precalculated matrix inverse to be stored in memory - and not be recalculated repeatedly.
+## This improves run time performance. 
+
+
 makeCacheMatrix <- function(x = matrix()) {
+
+## populate get, set, getinv, setinv - and make them a list. 
 
     inv <- NULL
 
@@ -25,7 +29,8 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## This function first determines if the inverse matrix has already been calculated and returns the result if it has.
+## If not calculated - it will perform the calculation. 
 
 cacheSolve <- function(x, ...) {
 ## Calculate the inverse of 'x'
